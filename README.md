@@ -19,3 +19,6 @@ mn-alias vps-ip:6889 masternode-genkey collateral-txid vout
 ```
 
 #### Run the qt wallet, go to Masternodes tab, choose your node and click "start alias" at the bottom.
+
+## Suggest Masternode VPS
+Get $10 bonus: [Take it now](https://m.do.co/c/427fd48a9ec5)
