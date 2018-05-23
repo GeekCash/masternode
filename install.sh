@@ -52,7 +52,7 @@ _rpcUserName=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 12 ; echo '')
 _rpcPassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
 
 # Get the IP address of your vps which will be hosting the masternode
-_nodeIpAddress=$(ip route get 1 | awk '{print $NF;exit}')
+_nodeIpAddress='curl ipecho.net/plain'
 
 # Make a new directory for geekcash daemon
 rm -r ~/.geekcash/
