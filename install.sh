@@ -41,7 +41,7 @@ read VARIABLE
 _sshPortNumber=${VARIABLE:-22}
 
 # Get a new privatekey by going to console >> debug and typing masternode genkey
-printf "Masternode GenKey: "
+printf "Enter Masternode PrivateKey: "
 read _nodePrivateKey
 
 # The RPC node will only accept connections from your localhost
