@@ -4,9 +4,10 @@
 # ATTENTION: The anti-ddos part will disable http, https and dns ports.
 
 
-if [ "$(whoami)" != "root" ]; then
-  echo "Script must be run as user: root"
-  exit -1
+if [[ $UID != 0 ]]; then
+    echo "Please run this script with sudo:"
+    echo "sudo $0 $*"
+    exit 1
 fi
 
 while true; do
@@ -95,10 +96,10 @@ chmod +x ./geekcash-1.0.1/bin/
 
 #
 
-echo "Put executable to /usr>/local/bin"
-cp ./geekcash-1.0.1/bin/geekcashd /usr/local/bin/
-cp ./geekcash-1.0.1/bin/geekcash-cli /usr/local/bin/
-cp ./geekcash-1.0.1/bin/geekcash-tx /usr/local/bin/
+echo "Put executable to /usr/bin"
+cp ./geekcash-1.0.1/bin/geekcashd /usr/bin/
+cp ./geekcash-1.0.1/bin/geekcash-cli /usr/bin/
+cp ./geekcash-1.0.1/bin/geekcash-tx /usr/bin/
 
 rm -rf ./geekcash-1.0.1
 rm -rf ./geekcash-1.0.1-x86_64-linux-gnu.tar.gz
