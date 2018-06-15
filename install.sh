@@ -88,7 +88,7 @@ echo "Download GeekCash..."
 #wget -qO- --no-check-certificate --content-disposition https://github.com/GeekCash/geekcash/releases/download/v1.0.1.2/geekcash-1.0.1-x86_64-linux-gnu.tar.gz | tar -xzvf geekcash-1.0.1-x86_64-linux-gnu.tar.gz
 
 apt install curl -y
-curl -LJO https://github.com/GeekCash/geekcash/releases/download/v1.0.1.2/geekcash-1.0.1-x86_64-linux-gnu.tar.gz
+curl -LJO https://github.com/GeekCash/geekcash/releases/download/v1.0.1.3/geekcash-1.0.1-x86_64-linux-gnu.tar.gz
 
 echo "unzip..."
 tar -xzvf ./geekcash-1.0.1-x86_64-linux-gnu.tar.gz
