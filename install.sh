@@ -29,17 +29,7 @@ while true; do
  fi
 done
 
-
-# Warning that the script will reboot the server
-echo "WARNING: This script will reboot the server when it's finished."
-printf "Press Ctrl+C to cancel or Enter to continue: "
-read IGNORE
-
 cd
-# Changing the SSH Port to a custom number is a good security measure against DDOS attacks
-printf "Custom SSH Port(Enter to ignore): "
-read VARIABLE
-_sshPortNumber=${VARIABLE:-22}
 
 # Get a new privatekey by going to console >> debug and typing masternode genkey
 printf "Enter Masternode PrivateKey: "
@@ -84,7 +74,7 @@ cd
 
 # Download geekcash and put executable to /usr/local/bin
 
-echo "Download GeekCash..."
+echo "GeekCash downloading..."
 #wget -qO- --no-check-certificate --content-disposition https://github.com/GeekCash/geekcash/releases/download/v1.0.1.2/geekcash-1.0.1-x86_64-linux-gnu.tar.gz | tar -xzvf geekcash-1.0.1-x86_64-linux-gnu.tar.gz
 
 apt install curl -y
@@ -99,7 +89,7 @@ chmod +x ./geekcash-1.0.1/bin/
 echo "Put executable to /usr/bin"
 cp ./geekcash-1.0.1/bin/geekcashd /usr/bin/
 cp ./geekcash-1.0.1/bin/geekcash-cli /usr/bin/
-cp ./geekcash-1.0.1/bin/geekcash-tx /usr/bin/
+
 
 rm -rf ./geekcash-1.0.1
 rm -rf ./geekcash-1.0.1-x86_64-linux-gnu.tar.gz
@@ -155,14 +145,18 @@ sed -i "s/[#]\{0,1\}[ ]\{0,1\}Port [0-9]\{2,\}/Port ${_sshPortNumber}/g" /etc/ss
 
 # Firewall security measures
 apt install ufw -y
-ufw disable
+#ufw disable
 ufw allow 6889
-ufw allow "$_sshPortNumber"/tcp
-ufw limit "$_sshPortNumber"/tcp
+#ufw allow "$_sshPortNumber"/tcp
+#ufw limit "$_sshPortNumber"/tcp
 ufw logging on
-ufw default deny incoming
+#ufw default deny incoming
 ufw default allow outgoing
 ufw --force enable
 
+
+# Start GeekCash Deamon
+geekcashd
+
 # Reboot the server
-reboot
+#reboot
