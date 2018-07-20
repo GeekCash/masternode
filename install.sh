@@ -12,11 +12,12 @@ fi
 
 while true; do
  if [ -d ~/.geekcash ]; then
-   printf "~/.geekcash/ already exists! The installer will delete this folder. Continue anyway?(Y/n)"
+   printf "~/.geekcash/ already exists! The installer will delete this folder. Continue anyway?(Y/n):"
    read REPLY
    if [ ${REPLY} == "Y" ]; then
-      pID=$(ps -ef | grep geekcashd | awk '{print $2}')
-      kill ${pID}
+      #pID=$(ps -ef | grep geekcashd | awk '{print $2}')
+      #kill ${pID}
+      killall -v geekcashd
       rm -rf ~/.geekcash/
       break
    else
