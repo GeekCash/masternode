@@ -17,7 +17,12 @@ echo "unzip..."
 tar -xzvf ./geekcash-1.0.1-x86_64-linux-gnu.tar.gz
 chmod +x ./geekcash-1.0.1/bin/
 
-#
+# check geekcash runing & stop
+
+if ps ax | grep -v grep | grep geekcashd > /dev/null
+then
+    geekcash-cli stop && sleep 5
+fi
 
 echo "Put executable to /usr/bin"
 cp ./geekcash-1.0.1/bin/geekcashd /usr/bin/
@@ -29,9 +34,5 @@ rm -rf ./geekcash-1.0.1-x86_64-linux-gnu.tar.gz
 
 
 #start geekcashd
-if ps ax | grep -v grep | grep geekcashd > /dev/null
-then
-    geekcash-cli stop && sleep 10 && geekcashd
-else
-    sleep 10 && geekcashd
-fi
+
+geekcashd
