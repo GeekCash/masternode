@@ -17,7 +17,8 @@ while true; do
    if [ ${REPLY} == "Y" ]; then
       #pID=$(ps -ef | grep geekcashd | awk '{print $2}')
       #kill ${pID}
-      killall -v geekcashd
+      killall -v geekcashd && sleep 5
+      
       rm -rf ~/.geekcash/
       break
    else
