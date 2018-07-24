@@ -149,7 +149,7 @@ chmod 0700 ./clearlog.sh
 apt install ufw -y
 #ufw disable
 ufw allow 6889
-#ufw allow "$_sshPortNumber"/tcp
+ufw allow 22
 #ufw limit "$_sshPortNumber"/tcp
 ufw logging on
 #ufw default deny incoming
