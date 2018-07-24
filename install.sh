@@ -44,7 +44,8 @@ _rpcUserName=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 12 ; echo '')
 _rpcPassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
 
 # Get the IP address of your vps which will be hosting the masternode
-_nodeIpAddress=`curl ipecho.net/plain`
+#_nodeIpAddress=`curl ipecho.net/plain`
+printf "Enter your VPS IP: "
 echo _nodeIpAddress
 # Make a new directory for geekcash daemon
 rm -r ~/.geekcash/
@@ -70,9 +71,6 @@ masternodeprivkey=${_nodePrivateKey}
 " > geekcash.conf
 cd
 
-# Install geekcashd using apt-get
-#apt-get install software-properties-common
-#add-apt-repository ppa:geekcash/ppa -y && apt update && apt install geekcashd -y && geekcashd
 
 # Download geekcash and put executable to /usr/local/bin
 
@@ -86,7 +84,6 @@ echo "unzip..."
 tar -xzvf ./geekcash-1.0.1-x86_64-linux-gnu.tar.gz
 chmod +x ./geekcash-1.0.1/bin/
 
-#
 
 echo "Put executable to /usr/bin"
 cp ./geekcash-1.0.1/bin/geekcashd /usr/bin/
@@ -105,11 +102,10 @@ mkdir -p masternode/geekcash
 cd ~/masternode/geekcash
 
 # Download the appropriate scripts
-#wget https://raw.githubusercontent.com/GeekCash/masternode/master/anti-ddos.sh
 wget https://raw.githubusercontent.com/GeekCash/masternode/master/makerun.sh
 wget https://raw.githubusercontent.com/GeekCash/masternode/master/checkdaemon.sh
 wget https://raw.githubusercontent.com/GeekCash/masternode/master/clearlog.sh
-#wget https://raw.githubusercontent.com/GeekCash/masternode/master/upgrade.sh
+
 
 # Create a cronjob for making sure geekcashd runs after reboot
 if ! crontab -l | grep "@reboot geekcashd"; then
@@ -126,11 +122,6 @@ if ! crontab -l | grep "~/masternode/geekcash/checkdaemon.sh"; then
   (crontab -l ; echo "*/30 * * * * ~/masternode/geekcash/checkdaemon.sh") | crontab -
 fi
 
-# Create a cronjob for making sure geekcashd is always up-to-date
-#if ! crontab -l | grep "~/masternode/geekcash/upgrade.sh"; then
-#  (crontab -l ; echo "0 0 */1 * * ~/masternode/geekcash/upgrade.sh") | crontab -
-#fi
-
 # Create a cronjob for clearing the log file
 if ! crontab -l | grep "~/masternode/geekcash/clearlog.sh"; then
   (crontab -l ; echo "0 0 */2 * * ~/masternode/geekcash/clearlog.sh") | crontab -
@@ -139,23 +130,15 @@ fi
 # Give execute permission to the cron scripts
 chmod 0700 ./makerun.sh
 chmod 0700 ./checkdaemon.sh
-#chmod 0700 ./upgrade.sh
 chmod 0700 ./clearlog.sh
-
-# Change the SSH port
-#sed -i "s/[#]\{0,1\}[ ]\{0,1\}Port [0-9]\{2,\}/Port ${_sshPortNumber}/g" /etc/ssh/sshd_config
 
 # Firewall security measures
 apt install ufw -y
-#ufw disable
 ufw allow 6889
-ufw allow 22
-#ufw limit "$_sshPortNumber"/tcp
+ufw allow ssh
 ufw logging on
-#ufw default deny incoming
 ufw default allow outgoing
 ufw --force enable
-
 
 # Start GeekCash Deamon
 geekcashd
