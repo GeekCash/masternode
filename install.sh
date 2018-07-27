@@ -17,9 +17,8 @@ while true; do
    if [ ${REPLY} == "Y" ]; then
       #pID=$(ps -ef | grep geekcashd | awk '{print $2}')
       #kill ${pID}
-      killall -v geekcashd && sleep 5
+      killall -v geekcashd && sleep 5     
       
-      rm -rf ~/.geekcash/
       break
    else
       if [ ${REPLY} == "n" ]; then
@@ -44,6 +43,7 @@ _rpcUserName=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 12 ; echo '')
 _rpcPassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
 
 # Get the IP address of your vps which will be hosting the masternode
+apt install curl -y
 _nodeIpAddress=`curl ifconfig.me/ip`
 #_nodeIpAddress=$(curl -s 4.icanhazip.com)
 if [[ ${_nodeIpAddress} =~ ^[0-9]+.[0-9]+.[0-9]+.[0-9]+$ ]]; then
@@ -80,7 +80,7 @@ cd
 echo "GeekCash downloading..."
 #wget -qO- --no-check-certificate --content-disposition https://github.com/GeekCash/geekcash/releases/download/v1.0.1.2/geekcash-1.0.1-x86_64-linux-gnu.tar.gz | tar -xzvf geekcash-1.0.1-x86_64-linux-gnu.tar.gz
 
-apt install curl -y
+
 curl -LJO https://github.com/GeekCash/geekcash/releases/download/v1.0.1.3/geekcash-1.0.1-x86_64-linux-gnu.tar.gz
 
 echo "unzip..."
