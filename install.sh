@@ -44,9 +44,13 @@ _rpcUserName=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 12 ; echo '')
 _rpcPassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
 
 # Get the IP address of your vps which will be hosting the masternode
-#_nodeIpAddress=`curl ipecho.net/plain`
-printf "Enter your VPS IP: "
-read _nodeIpAddress
+_nodeIpAddress=`curl ifconfig.me/ip`
+#_nodeIpAddress=$(curl -s 4.icanhazip.com)
+if [[ ${_nodeIpAddress} =~ ^[0-9]+.[0-9]+.[0-9]+.[0-9]+$ ]]; then
+  external_ip_line="externalip=${_nodeIpAddress}:6889"
+else
+  external_ip_line="#externalip=external_IP_goes_here:6889"
+fi
 # Make a new directory for geekcash daemon
 rm -r ~/.geekcash/
 mkdir ~/.geekcash/
@@ -66,7 +70,7 @@ logtimestamps=1
 maxconnections=64
 txindex=1
 masternode=1
-externalip=${_nodeIpAddress}:6889
+${external_ip_line}
 masternodeprivkey=${_nodePrivateKey}
 " > geekcash.conf
 cd
