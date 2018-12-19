@@ -20,6 +20,7 @@ mn-alias vps-ip:6889 masternode-genkey collateral-txid vout
 
 #### Update newest verion:
 ```
+rm -rf ./upgrade.sh
 wget https://rawgit.com/GeekCash/masternode/master/upgrade.sh
 chmod +x ./upgrade.sh
 sudo bash ./upgrade.sh
