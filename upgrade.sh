@@ -34,5 +34,5 @@ rm -rf ./geekcash-1.2.0-x86_64-linux-gnu.tar.gz
 
 
 #start geekcashd
-echo "GeekCash server starting..."
-sleep 5 && geekcashd -reindex
+echo "GeekCash start..."
+sleep 5 && geekcashd

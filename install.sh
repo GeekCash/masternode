@@ -143,7 +143,7 @@ ufw --force enable
 
 # Start GeekCash Deamon
 echo "GeekCash server starting..."
-geekcashd -reindex
+geekcashd
 
 # Reboot the server
 #reboot
