@@ -21,7 +21,7 @@ chmod +x ./geekcash-1.2.0/bin/
 
 if ps ax | grep -v grep | grep geekcashd > /dev/null
 then
-    geekcash-cli stop && sleep 5
+    geekcash-cli stop && sleep 15
 fi
 
 echo "Put executable to /usr/bin"
