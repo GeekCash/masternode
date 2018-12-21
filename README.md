@@ -29,9 +29,10 @@ sudo bash ./upgrade.sh
 #### Run the qt wallet, go to Masternodes tab, choose your node and click "start alias" at the bottom.
 
 ### Suggest Masternode VPS
+Get $25 for new register: [Take it now](https://upcloud.com/signup/?promo=57GV2N)
+Get $10 for new register: [Take it now](https://www.vultr.com/?ref=6838038)
 Get $10 bonus for new register: [Take it now](https://m.do.co/c/427fd48a9ec5)
 then enter coupon code ($15): LowEndBox
-
 
 
 More info: [GeekCash.org](https://geekcash.org) | [Discord](https://discord.gg/4fDKzQw) | [Facebook](https://www.facebook.com/geekcash.org) | [Twitter](https://twitter.com/GeekCash)
