@@ -13,6 +13,13 @@ chmod +x ./install.sh
 sudo bash ./install.sh
 ```
 
+#### Version 2 - Easy to set up for multiple accounts. Note: Do not run with `sudo`.
+```
+wget https://rawgit.com/GeekCash/masternode/master/installv2.sh
+chmod +x ./installv2.sh
+bash ./installv2.sh
+```
+
 #### On the client-side, add the following line to masternode.conf:
 ```
 mn-alias vps-ip:6889 masternode-genkey collateral-txid vout
@@ -30,7 +37,9 @@ sudo bash ./upgrade.sh
 
 ### Suggest Masternode VPS
 Get $25 for new register: [Take it now](https://upcloud.com/signup/?promo=57GV2N)
+
 Get $10 for new register: [Take it now](https://www.vultr.com/?ref=6838038)
+
 Get $10 bonus for new register: [Take it now](https://m.do.co/c/427fd48a9ec5)
 then enter coupon code ($15): LowEndBox
 
