@@ -30,7 +30,7 @@ mn-alias vps-ip:6889 masternode-genkey collateral-txid vout
 rm -rf ./upgrade.sh
 wget https://rawgit.com/GeekCash/masternode/master/upgrade.sh
 chmod +x ./upgrade.sh
-sudo bash ./upgrade.sh
+bash ./upgrade.sh
 ```
 
 #### Run the qt wallet, go to Masternodes tab, choose your node and click "start alias" at the bottom.
