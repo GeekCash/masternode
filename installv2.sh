@@ -59,9 +59,7 @@ _rpcPassword=$(head /dev/urandom | tr -dc a-z0-9 | head -c 32 ; echo '')
 # _mnIP=`curl ifconfig.me/ip`
 
 # Make a new directory for geekcash daemon
-rm -r ~/.geekcash/
-mkdir ~/.geekcash/
-touch ~/.geekcash/geekcash.conf
+mkdir -p ~/.geekcash/ && touch ~/.geekcash/geekcash.conf
 
 # Change the directory to ~/.geekcash
 cd ~/.geekcash/
