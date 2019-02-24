@@ -28,7 +28,7 @@ done
 cd
 
 # Get a new privatekey by going to console >> debug and typing masternode genkey
-printf "Enter Masternode PrivateKey: "
+printf "Enter Masternode PrivateKey:"
 read _mnPrivKey
 
 read -p "Enter your server IP:" _mnIP
@@ -52,7 +52,7 @@ read -p "Allow RPC IP (default 127.0.0.1): " -i "127.0.0.1" _rpcallowip
 _rpcallowip=${_rpcallowip:-"127.0.0.1"}
 
 # Choose a random and secure password for the RPC
-_rpcPassword=$(head /dev/urandom | tr -dc a-z0-9 | head -c 32 ; echo '')
+_rpcPassword=$(head /dev/urandom | tr -dc A-Z0-9 | head -c 32 ; echo '')
 
 # Get the IP address of your vps which will be hosting the masternode
 
@@ -89,18 +89,18 @@ printf "Do you want to download GeekCash? [Y/n] "
 read _x
 if [[ $_x == "" ||  $_x == "y"  ||  $_x == "Y" ]]; then
   echo "GeekCash downloading..."
-  curl -LJO https://github.com/GeekCash/geekcash/releases/download/v1.2.0.1/geekcash-1.2.0-x86_64-linux-gnu.tar.gz
+  curl -LJO https://github.com/GeekCash/geek/releases/download/v1.3.0.1/geekcash-1.3.0-x86_64-linux-gnu.tar.gz
 
   echo "unzip..."
-  tar -xzvf ./geekcash-1.2.0-x86_64-linux-gnu.tar.gz
-  chmod +x ./geekcash-1.2.0/bin/
+  tar -xzvf ./geekcash-1.3.0-x86_64-linux-gnu.tar.gz
+  chmod +x ./geekcash-1.3.0/bin/
 
   echo "Put executable to /usr/bin"
-  sudo cp ./geekcash-1.2.0/bin/geekcashd /usr/bin/
-  sudo cp ./geekcash-1.2.0/bin/geekcash-cli /usr/bin/
+  sudo cp ./geekcash-1.3.0/bin/geekcashd /usr/bin/
+  sudo cp ./geekcash-1.3.0/bin/geekcash-cli /usr/bin/
 
-  rm -rf ./geekcash-1.2.0
-  rm -rf ./geekcash-1.2.0-x86_64-linux-gnu.tar.gz
+  rm -rf ./geekcash-1.3.0
+  rm -rf ./geekcash-1.3.0-x86_64-linux-gnu.tar.gz
 fi
 
 

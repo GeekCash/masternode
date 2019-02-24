@@ -8,19 +8,22 @@ geekcash-cli stop
 echo "GeekCash downloading..."
 
 sudo apt-get install curl -y
-curl -LJO https://github.com/GeekCash/geekcash/releases/download/v1.2.0.1/geekcash-1.2.0-x86_64-linux-gnu.tar.gz
+curl -LJO https://github.com/GeekCash/geek/releases/download/v1.3.0.1/geekcash-1.3.0-x86_64-linux-gnu.tar.gz
 
 echo "unzip..."
-tar -xzvf ./geekcash-1.2.0-x86_64-linux-gnu.tar.gz
-chmod +x ./geekcash-1.2.0/bin/
+tar -xzvf ./geekcash-1.3.0-x86_64-linux-gnu.tar.gz
+chmod +x ./geekcash-1.3.0/bin/
 
 echo "Put executable to /usr/bin"
-sudo cp ./geekcash-1.2.0/bin/geekcashd /usr/bin/
-sudo cp ./geekcash-1.2.0/bin/geekcash-cli /usr/bin/
+sudo cp ./geekcash-1.3.0/bin/geekcashd /usr/bin/
+sudo cp ./geekcash-1.3.0/bin/geekcash-cli /usr/bin/
 
 # remove temp
-rm -rf ./geekcash-1.2.0
-rm -rf ./geekcash-1.2.0-x86_64-linux-gnu.tar.gz
+rm -rf ./geekcash-1.3.0
+rm -rf ./geekcash-1.3.0-x86_64-linux-gnu.tar.gz
+
+# remove old blocks
+cd ~/.geekcash/ && rm -rf !("geekcash.conf"|"wallet.dat")
 
 #start geekcashd
 echo "GeekCash start..."
