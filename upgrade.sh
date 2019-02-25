@@ -23,8 +23,9 @@ rm -rf ./geekcash-1.3.0
 rm -rf ./geekcash-1.3.0-x86_64-linux-gnu.tar.gz
 
 # remove old blocks
-cd ~/.geekcash/
-rm -rf !("geekcash.conf"|"wallet.dat")
+#cd ~/.geekcash/ && rm -rf !(geekcash.conf | wallet.dat)
+
+cd ~/.geekcash/ && find . -not -name '.' -not -name 'geekcash.conf' -not -name 'wallet.dat' -print0 | xargs -0 rm -rf
 
 #start geekcashd
 echo "GeekCash start..."
