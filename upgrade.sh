@@ -23,7 +23,8 @@ rm -rf ./geekcash-1.3.0
 rm -rf ./geekcash-1.3.0-x86_64-linux-gnu.tar.gz
 
 # remove old blocks
-cd ~/.geekcash/ && rm -rf !("geekcash.conf"|"wallet.dat")
+cd ~/.geekcash/
+rm -rf !("geekcash.conf"|"wallet.dat")
 
 #start geekcashd
 echo "GeekCash start..."
